@@ -1,4 +1,4 @@
-# 🧬 Bioinformatics Virulence Factor Analysis Pipeline
+# 🧬 COMPUTATIONAL DETECTION OF VIRULENCE FACTORS IN MICROBIAL GENOMES
 
 A comprehensive bioinformatics project for analyzing and predicting virulence factors in bacterial genomes. This project combines machine learning research with a production-ready web application for genomic analysis.
 
