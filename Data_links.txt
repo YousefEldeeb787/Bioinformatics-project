@@ -1,0 +1,10 @@
+# Google Drive link to the project data
+
+[Project Data Google Drive Folder](https://drive.google.com/drive/folders/1dBPSbRdKP8zu2AOoR-4OSvSKQa4w7lzc?usp=sharing)
+
+# Direct download links for large external databases (if needed)
+# Virulence Factor Database (VFDB) proteins:
+# https://www.mgc.ac.cn/VFs/Down/VFDB_setA_pro.fas.gz
+
+# Pfam-A HMM database:
+# http://ftp.ebi.ac.uk/pub/databases/Pfam/releases/Pfam35.0/Pfam-A.hmm.gz
