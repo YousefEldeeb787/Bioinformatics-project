@@ -170,29 +170,19 @@ Large database files are managed externally. Download links and instructions are
 
 ## 📈 Future Development
 
+**Current Status:**
 - ✅ Core ORF prediction and ML classification
 - ✅ Interactive web interface
 - ✅ AI-powered chatbot assistance
-- 🚧 Full VFDB integration for BLAST analysis
-- 🚧 SignalP integration for signal peptide prediction
-- 🚧 Enhanced protein domain analysis
-- 🚧 Batch processing capabilities
-- 🚧 User authentication and saved results
 
-## 📝 Citation & References
+**Planned Enhancements:**
 
-- **VFDB**: Virulence Factor Database - http://www.mgc.ac.cn/VFs/
-- **Pfam**: Protein families database - https://pfam.xfam.org/
-- **BLAST**: Basic Local Alignment Search Tool - NCBI
+Future work will include secretion system classification, virulence regulation analysis, and explainable AI (XAI) to improve biological insight and model transparency.
 
 ## 👤 Author
 
 **Yousef Eldeeb**
 - GitHub: [@YousefEldeeb787](https://github.com/YousefEldeeb787)
-
-## 📄 License
-
-This project is available for educational and research purposes.
 
 ---
 
