@@ -19,14 +19,14 @@ A **complete, production-ready bioinformatics web application** with:
 - ✅ ORF prediction (6-frame translation)
 - ✅ Machine Learning VF prediction
 - ✅ BLAST integration (VFDB ready)
-- ✅ Signal peptide detection
-- ✅ Multi-evidence scoring (0-6 scale)
+- ✅ HMM profile detection
+- ✅ Multi-evidence scoring (0-9 scale)
 - ✅ Sequence alignment support
 - ✅ Chatbot API
 
-### Removed as Requested
-- ❌ HMM search (too slow, large files, all negative)
-- ✅ Faster, simpler scoring: ML + BLAST + SignalP only
+### Updated Scoring System
+- ✅ Enhanced scoring: ML + BLAST + HMM
+- ✅ More accurate classification with BLAST (0-4) and HMM (0-3)
 
 ## 🚀 3-Step Quick Start
 
@@ -112,18 +112,18 @@ python test_services.py
 ## 📊 How The Scoring Works
 
 ```
-VF Score = ML (0-2) + BLAST (0-3) + SignalP (0-1)
+VF Score = ML (0-2) + BLAST (0-4) + HMM (0-3)
 
 Example:
 - ML predicts VF with 75% probability → 2 points
-- BLAST finds 85% identity match in VFDB → 3 points  
-- SignalP detects secretion signal → 1 point
-= Total: 6 points = HIGH-CONFIDENCE VF ✅
+- BLAST finds 85% identity match in VFDB → 4 points  
+- HMM detects virulence domain → 3 points
+= Total: 9 points = HIGH-CONFIDENCE VF ✅
 
 Classification Thresholds:
-5-6 points: High-confidence VF (strong evidence)
-3-4 points: Putative VF (moderate evidence)
-1-2 points: Low-confidence VF (weak evidence)
+≥7 points: High-confidence VF (strong evidence)
+4-6 points: Putative VF (moderate evidence)
+1-3 points: Low-confidence VF (weak evidence)
 0 points: Non-VF (no evidence)
 ```
 
@@ -202,7 +202,7 @@ Without BLAST+: Alignment page will show helpful error messages
 
 ### 3. ORF Analysis (/orf-analysis)
 - Upload genome for VF analysis
-- See pipeline steps (ORF → ML → BLAST → SignalP)
+- See pipeline steps (ORF → ML → BLAST → HMM)
 - Real-time progress tracking
 - Learn how each method works
 
@@ -296,7 +296,7 @@ Without BLAST+: Alignment page will show helpful error messages
    - Add more sample datasets
    - Adjust scoring thresholds
    - Add more chatbot responses
-   - Integrate real SignalP tool
+   - Enhance HMM profile database
 
 ## 🌟 Why This App Is Great
 

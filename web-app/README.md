@@ -7,8 +7,8 @@ An interactive web platform for learning bioinformatics while detecting virulenc
 - **ORF Prediction**: Automatically identify open reading frames in bacterial genomes
 - **ML-Based Prediction**: Random Forest model predicts virulence probability
 - **BLAST Analysis**: Compare ORFs against VFDB (Virulence Factor Database)
-- **Signal Peptide Detection**: Identify secreted proteins
-- **Evidence-Based Scoring**: Multi-evidence VF classification (0-6 scale)
+- **HMM Profile Detection**: Identify conserved virulence domains
+- **Evidence-Based Scoring**: Multi-evidence VF classification (0-9 scale)
 - **Interactive Visualizations**: Charts, tables, and network graphs
 - **Educational Guidance**: Context-aware tooltips and chatbot assistant
 - **Sequence Alignment**: Compare genomes using BLAST/MAFFT
@@ -18,13 +18,13 @@ An interactive web platform for learning bioinformatics while detecting virulenc
 Each ORF receives a cumulative score from three methods:
 
 - **Machine Learning** (0-2 points): Based on amino acid composition and hydrophobicity
-- **BLAST** (0-3 points): Identity to known virulence factors in VFDB
-- **SignalP** (0-1 point): Presence of secretion signals
+- **BLAST** (0-4 points): Identity to known virulence factors in VFDB
+- **HMM** (0-3 points): Profile-based domain detection
 
 **Classification:**
-- **5-6 points**: High-confidence VF ✅
-- **3-4 points**: Putative VF ⚠️
-- **1-2 points**: Low-confidence VF ❓
+- **≥7 points**: High-confidence VF ✅
+- **4-6 points**: Putative VF ⚠️
+- **1-3 points**: Low-confidence VF ❓
 - **0 points**: Non-VF ❌
 
 ## 🚀 Quick Start
@@ -78,7 +78,7 @@ Bioinformatics_app/
 │   │   ├── orf_prediction.py      # ORF finder (6-frame translation)
 │   │   ├── ml_prediction.py       # Random Forest VF predictor
 │   │   ├── blast_service.py       # BLAST against VFDB
-│   │   ├── signalp_service.py     # Signal peptide heuristic
+│   │   ├── signalp_service.py     # HMM profile detection
 │   │   ├── scoring.py             # VF score calculator
 │   │   └── alignment_service.py   # Sequence alignment
 │   ├── models/
@@ -115,7 +115,7 @@ Bioinformatics_app/
 ### 3. VF Scoring
 - ML model predicts virulence probability
 - BLAST compares against VFDB
-- SignalP detects secretion signals
+- HMM detects virulence domains
 - Combined score determines classification
 
 ### 4. View Results
@@ -133,7 +133,7 @@ Bioinformatics_app/
 Click the 💬 button to ask questions:
 - "What is an ORF?"
 - "How does BLAST scoring work?"
-- "Explain signal peptides"
+- "Explain HMM profiles"
 - "What is a virulence factor?"
 - "How to interpret my results?"
 
@@ -195,7 +195,7 @@ docker-compose up --build
 Single prediction methods have limitations:
 - **ML only**: May miss novel VFs not in training data
 - **BLAST only**: Relies on existing database annotations
-- **SignalP only**: Not all VFs are secreted
+- **HMM only**: May not detect VFs with divergent sequences
 
 Combining evidence increases confidence and reduces false positives.
 

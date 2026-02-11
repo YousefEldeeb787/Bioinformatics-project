@@ -49,7 +49,7 @@ function Chatbot({ isOpen, setIsOpen }) {
   const quickQuestions = [
     "What is an ORF?",
     "How does BLAST E-value work?",
-    "Explain signal peptides",
+    "Explain HMM profiles",
     "What makes a protein virulent?",
     "How to interpret my results?",
     "What is machine learning?"

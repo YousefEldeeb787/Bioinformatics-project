@@ -101,7 +101,7 @@ function HomePage() {
                 <p style={{ marginBottom: '1rem', lineHeight: '1.6' }}>
                   <strong>What happens in this project:</strong><br />
                   Your uploaded genome (DNA FASTA) is scanned to find Open Reading Frames (ORFs) — regions likely to encode proteins. 
-                  These ORFs become the foundation for all downstream analyses (ML, BLAST, HMM, SignalP).
+                  These ORFs become the foundation for all downstream analyses (ML, BLAST, HMM).
                   We translate nucleotide sequences into protein sequences and filter by biologically meaningful lengths to avoid noise.
                 </p>
                 <p style={{ fontSize: '0.9rem', color: '#4a5568' }}>
@@ -206,16 +206,16 @@ function HomePage() {
             )}
           </div>
 
-          {/* Signal Peptide Detection */}
+          {/* HMM Profile Detection */}
           <div style={{ marginBottom: '1rem', background: 'white', borderRadius: '8px', padding: '1rem' }}>
             <div 
               onClick={() => toggleSection('signal')}
               style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer' }}
             >
               <div>
-                <strong>📡 Signal Peptide Detection (SignalP)</strong>
+                <strong>🧬 HMM Profile Detection</strong>
                 <p style={{ fontSize: '0.9rem', color: '#718096', marginTop: '0.3rem' }}>
-                  Identify secreted proteins often involved in pathogenicity.
+                  Identify conserved virulence domains using Hidden Markov Models.
                 </p>
               </div>
               {expandedSections.signal ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
@@ -224,12 +224,12 @@ function HomePage() {
               <div style={{ marginTop: '1rem', paddingTop: '1rem', borderTop: '1px solid #e2e8f0' }}>
                 <p style={{ marginBottom: '1rem', lineHeight: '1.6' }}>
                   <strong>What happens in this project:</strong><br />
-                  SignalP predicts whether a protein contains a signal peptide, suggesting secretion outside the cell — a common trait of toxins and virulence factors.
+                  HMM profiles detect conserved protein domains and functional motifs associated with virulence. This method identifies structural patterns that indicate virulence function.
                 </p>
                 <p style={{ fontSize: '0.9rem', color: '#4a5568' }}>
                   <strong>🔗 Learn more:</strong><br />
-                  <a href="https://services.healthtech.dtu.dk/service.php?SignalP" target="_blank" rel="noopener noreferrer" style={{ color: '#667eea' }}>SignalP official site</a><br />
-                  <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5452220/" target="_blank" rel="noopener noreferrer" style={{ color: '#667eea' }}>Review on secreted virulence proteins</a>
+                  <a href="http://hmmer.org/" target="_blank" rel="noopener noreferrer" style={{ color: '#667eea' }}>HMMER official site</a><br />
+                  <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3695513/" target="_blank" rel="noopener noreferrer" style={{ color: '#667eea' }}>Review on HMM in bioinformatics</a>
                 </p>
               </div>
             )}
@@ -273,15 +273,11 @@ function HomePage() {
                     </tr>
                     <tr>
                       <td style={{ padding: '0.5rem', borderBottom: '1px solid #e2e8f0' }}>Strong BLAST VFDB hit</td>
-                      <td style={{ padding: '0.5rem', borderBottom: '1px solid #e2e8f0' }}>+3</td>
+                      <td style={{ padding: '0.5rem', borderBottom: '1px solid #e2e8f0' }}>+4</td>
                     </tr>
                     <tr>
                       <td style={{ padding: '0.5rem', borderBottom: '1px solid #e2e8f0' }}>HMM virulence domain</td>
                       <td style={{ padding: '0.5rem', borderBottom: '1px solid #e2e8f0' }}>+3</td>
-                    </tr>
-                    <tr>
-                      <td style={{ padding: '0.5rem', borderBottom: '1px solid #e2e8f0' }}>Signal peptide</td>
-                      <td style={{ padding: '0.5rem', borderBottom: '1px solid #e2e8f0' }}>+1</td>
                     </tr>
                   </tbody>
                 </table>
@@ -364,7 +360,7 @@ function HomePage() {
           📤 Upload Genome File
           <InfoIcon 
             title="Genome Upload"
-            content="Upload a bacterial genome in FASTA format. The file should contain nucleotide sequences (A, T, G, C). We'll predict ORFs and analyze them for virulence factors using ML + BLAST + SignalP detection."
+            content="Upload a bacterial genome in FASTA format. The file should contain nucleotide sequences (A, T, G, C). We'll predict ORFs and analyze them for virulence factors using ML + BLAST + HMM detection."
           />
         </h2>
         

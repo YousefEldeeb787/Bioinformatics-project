@@ -40,7 +40,7 @@ function ORFAnalysisPage({ setResults }) {
       setProgress(60)
       await new Promise(resolve => setTimeout(resolve, 1500))
       
-      setStage('Detecting signal peptides...')
+      setStage('Detecting virulence domains...')
       setProgress(80)
       await new Promise(resolve => setTimeout(resolve, 500))
       
@@ -71,11 +71,11 @@ function ORFAnalysisPage({ setResults }) {
           🔬 Virulence Factor Analysis
           <InfoIcon 
             title="VF Analysis Pipeline"
-            content="This analysis combines four methods: (1) Machine Learning predictions based on sequence features, (2) BLAST comparison against known virulence factors in VFDB, (3) HMM search for virulence domains, and (4) Signal peptide detection for secreted proteins. Each method contributes to a cumulative VF score (0-10)."
+            content="This analysis combines three methods: (1) Machine Learning predictions based on sequence features, (2) BLAST comparison against known virulence factors in VFDB, and (3) HMM search for conserved virulence domains. Each method contributes to a cumulative VF score (0-9)."
           />
         </h1>
         <p style={{ color: '#718096', marginBottom: '2rem' }}>
-          Predict ORFs and detect virulence factors using ML + BLAST + SignalP
+          Predict ORFs and detect virulence factors using ML + BLAST + HMM
         </p>
       </div>
 
@@ -132,13 +132,13 @@ function ORFAnalysisPage({ setResults }) {
           
           <div style={{ padding: '1.5rem', background: '#faf5ff', borderRadius: '12px', border: '2px solid #d6bcfa' }}>
             <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>5️⃣</div>
-            <h3 style={{ marginBottom: '0.5rem' }}>SignalP (0-1 pt)</h3>
+            <h3 style={{ marginBottom: '0.5rem' }}>HMM (0-3 pts)</h3>
             <p style={{ fontSize: '0.9rem', color: '#44337a' }}>
-              Detect secretion signals
+              Detect virulence domains
             </p>
             <InfoIcon 
-              title="Signal Peptide Detection"
-              content="Signal peptides direct proteins for secretion outside the cell. Secreted proteins are often virulence factors. Score: 1 point if signal peptide detected, 0 otherwise."
+              title="HMM Profile Detection"
+              content="Hidden Markov Models detect conserved virulence factor domains and functional motifs. Score: 3 points for strong match, 2 for moderate, 1 for weak, 0 for no match."
             />
           </div>
         </div>
@@ -181,14 +181,9 @@ function ORFAnalysisPage({ setResults }) {
                   <td style={{ padding: '0.75rem' }}>Significant virulence domain</td>
                   <td style={{ padding: '0.75rem', textAlign: 'center', fontWeight: 'bold', color: '#c53030' }}>+3</td>
                 </tr>
-                <tr style={{ borderBottom: '1px solid #fed7d7' }}>
-                  <td style={{ padding: '0.75rem' }}><strong>SignalP</strong></td>
-                  <td style={{ padding: '0.75rem' }}>Signal peptide detected</td>
-                  <td style={{ padding: '0.75rem', textAlign: 'center', fontWeight: 'bold', color: '#c53030' }}>+1</td>
-                </tr>
                 <tr style={{ background: '#fed7d7' }}>
                   <td colSpan="2" style={{ padding: '0.75rem', fontWeight: 'bold' }}>Maximum Score</td>
-                  <td style={{ padding: '0.75rem', textAlign: 'center', fontWeight: 'bold', fontSize: '1.1rem' }}>10</td>
+                  <td style={{ padding: '0.75rem', textAlign: 'center', fontWeight: 'bold', fontSize: '1.1rem' }}>9</td>
                 </tr>
               </tbody>
             </table>

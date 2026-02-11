@@ -76,7 +76,7 @@ function ResultsPage({ results }) {
 
   const downloadResults = () => {
     const csv = [
-      ['ORF_ID', 'VF_Score', 'Classification', 'ML_Score', 'BLAST_Score', 'SignalP_Score', 'ML_Probability', 'Length'].join(','),
+      ['ORF_ID', 'VF_Score', 'Classification', 'ML_Score', 'BLAST_Score', 'HMM_Score', 'ML_Probability', 'Length'].join(','),
       ...results.orfs.map(orf => [
         orf.orf_id,
         orf.vf_score,
@@ -104,7 +104,7 @@ function ResultsPage({ results }) {
           📊 Analysis Results
           <InfoIcon 
             title="Understanding Results"
-            content="Each ORF has been scored using three methods: ML (0-2), BLAST (0-3), and SignalP (0-1). The total VF score (0-6) determines classification. High scores indicate strong evidence for virulence factor function."
+            content="Each ORF has been scored using three methods: ML (0-2), BLAST (0-4), and HMM (0-3). The total VF score (0-9) determines classification. High scores (≥7) indicate strong evidence for virulence factor function."
           />
         </h1>
         <p style={{ color: '#718096', marginBottom: '1rem' }}>
@@ -222,7 +222,7 @@ function ResultsPage({ results }) {
                 <th>VF Score
                   <InfoIcon 
                     title="VF Score"
-                    content="Total score (0-6) combining ML (0-2) + BLAST (0-3) + SignalP (0-1). Higher scores indicate stronger evidence for virulence factor function."
+                    content="Total score (0-9) combining ML (0-2) + BLAST (0-4) + HMM (0-3). Higher scores indicate stronger evidence for virulence factor function. ≥7=High, 4-6=Putative, 1-3=Low."
                   />
                 </th>
                 <th>Classification</th>
@@ -235,13 +235,13 @@ function ResultsPage({ results }) {
                 <th>BLAST
                   <InfoIcon 
                     title="BLAST Score"
-                    content="BLAST score (0-3). Based on identity to known virulence factors in VFDB. Higher identity = higher score."
+                    content="BLAST score (0-4). Based on identity to known virulence factors in VFDB. Higher identity = higher score."
                   />
                 </th>
-                <th>SignalP
+                <th>HMM
                   <InfoIcon 
-                    title="SignalP Score"
-                    content="Signal peptide score (0-1). Indicates if protein has secretion signal. Secreted proteins are often virulence factors."
+                    title="HMM Score"
+                    content="HMM profile score (0-3). Detects conserved virulence domains using Hidden Markov Models. Higher scores indicate stronger domain matches."
                   />
                 </th>
                 <th>Length (aa)</th>
@@ -255,9 +255,9 @@ function ResultsPage({ results }) {
                     <span style={{ 
                       fontWeight: 'bold', 
                       fontSize: '1.1rem',
-                      color: orf.vf_score >= 5 ? '#48bb78' : orf.vf_score >= 3 ? '#ed8936' : '#718096'
+                      color: orf.vf_score >= 7 ? '#48bb78' : orf.vf_score >= 4 ? '#ed8936' : '#718096'
                     }}>
-                      {orf.vf_score}/6
+                      {orf.vf_score}/9
                     </span>
                   </td>
                   <td>
@@ -287,17 +287,17 @@ function ResultsPage({ results }) {
         <h2>📚 How to Interpret Your Results</h2>
         <div style={{ lineHeight: '1.8' }}>
           <div style={{ marginBottom: '1.5rem' }}>
-            <h3 style={{ color: '#48bb78', marginBottom: '0.5rem' }}>✅ High-confidence VFs (Score 5-6)</h3>
+            <h3 style={{ color: '#48bb78', marginBottom: '0.5rem' }}>✅ High-confidence VFs (Score ≥7)</h3>
             <p>Strong evidence from multiple methods. These ORFs are very likely virulence factors. Consider these as priority targets for experimental validation.</p>
           </div>
           
           <div style={{ marginBottom: '1.5rem' }}>
-            <h3 style={{ color: '#ed8936', marginBottom: '0.5rem' }}>⚠️ Putative VFs (Score 3-4)</h3>
+            <h3 style={{ color: '#ed8936', marginBottom: '0.5rem' }}>⚠️ Putative VFs (Score 4-6)</h3>
             <p>Moderate evidence suggesting virulence function. May require further analysis or literature review to confirm role in pathogenicity.</p>
           </div>
           
           <div style={{ marginBottom: '1.5rem' }}>
-            <h3 style={{ color: '#fc8181', marginBottom: '0.5rem' }}>❓ Low-confidence VFs (Score 1-2)</h3>
+            <h3 style={{ color: '#fc8181', marginBottom: '0.5rem' }}>❓ Low-confidence VFs (Score 1-3)</h3>
             <p>Weak evidence. These may be false positives or represent novel virulence factors not well represented in databases.</p>
           </div>
           

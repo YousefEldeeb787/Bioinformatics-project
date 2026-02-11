@@ -39,7 +39,7 @@ function InfoIcon({ title, content }) {
               <ul style={{ marginTop: '0.5rem', marginLeft: '1.5rem' }}>
                 <li><a href="https://blast.ncbi.nlm.nih.gov/Blast.cgi" target="_blank" rel="noopener noreferrer">NCBI BLAST</a></li>
                 <li><a href="http://www.mgc.ac.cn/VFs/" target="_blank" rel="noopener noreferrer">VFDB Database</a></li>
-                <li><a href="https://services.healthtech.dtu.dk/service.php?SignalP" target="_blank" rel="noopener noreferrer">SignalP</a></li>
+                <li><a href="http://hmmer.org/" target="_blank" rel="noopener noreferrer">HMMER</a></li>
               </ul>
             </div>
           </div>

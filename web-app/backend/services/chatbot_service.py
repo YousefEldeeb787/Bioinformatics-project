@@ -57,18 +57,18 @@ Context about the bioinformatics platform (when relevant):
 - The platform predicts ORFs from bacterial genomes (6-frame translation)
 - Uses Random Forest ML to predict virulence probability
 - Runs BLAST against VFDB (Virulence Factor Database)
-- Detects signal peptides for secreted proteins
-- Combines evidence into VF score (0-6 points)
+- Detects virulence domains using HMM profiles
+- Combines evidence into VF score (0-9 points)
 
 Scoring system:
 - ML: 0-2 points (2 if prob ≥70%, 1 if ≥50%, 0 otherwise)
-- BLAST: 0-3 points (3 if identity >80%, 2 if >60%, 1 if >40%, 0 otherwise)
-- SignalP: 0-1 point (1 if signal peptide detected, 0 otherwise)
+- BLAST: 0-4 points (4 if identity >80%, 3 if >60%, 2 if >40%, 1 if >20%, 0 otherwise)
+- HMM: 0-3 points (3 if strong match, 2 if moderate, 1 if weak, 0 otherwise)
 
 Classifications:
-- 5-6 points: High-confidence VF
-- 3-4 points: Putative VF
-- 1-2 points: Low-confidence VF
+- ≥7 points: High-confidence VF
+- 4-6 points: Putative VF
+- 1-3 points: Low-confidence VF
 - 0 points: Non-VF
 
 Tone:
