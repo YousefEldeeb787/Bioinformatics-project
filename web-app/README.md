@@ -201,15 +201,4 @@ Combining evidence increases confidence and reduces false positives.
 
 
 
-
-
-## 📧 Support
-
-For questions or issues:
-- Check tooltips and chatbot in the app
-- Review API documentation
-- Consult VFDB and BLAST manuals
-
----
-
 **Built with ❤️ for bioinformatics education**
